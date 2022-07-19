@@ -10,6 +10,12 @@ class node{
         next=NULL;
         pre=NULL;
     }
+    node(int x)
+    {
+        this->data=x;
+        next=NULL;
+        pre=NULL;
+    }
 };
 class LRUCache
 {
@@ -22,6 +28,10 @@ class LRUCache
      cursize=0;
      head=NULL;
      rear=NULL;
+ }
+ void cap(int x)
+ {
+    capacity=x;
  }
  unordered_map<int,node *> mp;
  void refer(int x)
@@ -120,7 +130,7 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
     LRUCache l;
-    l.capacity=3;
+    l.cap(3);
     l.refer(1);
     l.display();
      l.refer(2);
@@ -134,80 +144,80 @@ int main()
     return 0;
 }
 //using list stl
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 
-class LRUCache {
-	// store keys of cache
-	list<int> dq;
+// class LRUCache {
+// 	// store keys of cache
+// 	list<int> dq;
 
-	// store references of key in cache
-	unordered_map<int, list<int>::iterator> ma;
-	int csize; // maximum capacity of cache
+// 	// store references of key in cache
+// 	unordered_map<int, list<int>::iterator> ma;
+// 	int csize; // maximum capacity of cache
 
-public:
-	LRUCache(int);
-	void refer(int);
-	void display();
-};
+// public:
+// 	LRUCache(int);
+// 	void refer(int);
+// 	void display();
+// };
 
-// Declare the size
-LRUCache::LRUCache(int n)
-{
-	csize = n;
-}
+// // Declare the size
+// LRUCache::LRUCache(int n)
+// {
+// 	csize = n;
+// }
 
-// Refers key x with in the LRU cache
-void LRUCache::refer(int x)
-{
-	// not present in cache
-	if (ma.find(x) == ma.end()) {
-		// cache is full
-		if (dq.size() == csize) {
-			// delete least recently used element
-			int last = dq.back();
+// // Refers key x with in the LRU cache
+// void LRUCache::refer(int x)
+// {
+// 	// not present in cache
+// 	if (ma.find(x) == ma.end()) {
+// 		// cache is full
+// 		if (dq.size() == csize) {
+// 			// delete least recently used element
+// 			int last = dq.back();
 
-			// Pops the last element
-			dq.pop_back();
+// 			// Pops the last element
+// 			dq.pop_back();
 
-			// Erase the last
-			ma.erase(last);
-		}
-	}
+// 			// Erase the last
+// 			ma.erase(last);
+// 		}
+// 	}
 
-	// present in cache
-	else
-		dq.erase(ma[x]);
+// 	// present in cache
+// 	else
+// 		dq.erase(ma[x]);
 
-	// update reference
-	dq.push_front(x);
-	ma[x] = dq.begin();
-}
+// 	// update reference
+// 	dq.push_front(x);
+// 	ma[x] = dq.begin();
+// }
 
-// Function to display contents of cache
-void LRUCache::display()
-{
+// // Function to display contents of cache
+// void LRUCache::display()
+// {
 
-	// Iterate in the deque and print
-	// all the elements in it
-	for (auto it = dq.begin(); it != dq.end();
-		it++)
-		cout << (*it) << " ";
+// 	// Iterate in the deque and print
+// 	// all the elements in it
+// 	for (auto it = dq.begin(); it != dq.end();
+// 		it++)
+// 		cout << (*it) << " ";
 
-	cout << endl;
-}
+// 	cout << endl;
+// }
 
-int main()
-{
-	LRUCache ca(4);
+// int main()
+// {
+// 	LRUCache ca(4);
 
-	ca.refer(1);
-	ca.refer(2);
-	ca.refer(3);
-	ca.refer(1);
-	ca.refer(4);
-	ca.refer(5);
-	ca.display();
+// 	ca.refer(1);
+// 	ca.refer(2);
+// 	ca.refer(3);
+// 	ca.refer(1);
+// 	ca.refer(4);
+// 	ca.refer(5);
+// 	ca.display();
 
-	return 0;
-}
+// 	return 0;
+// }
