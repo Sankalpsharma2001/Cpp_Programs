@@ -1,0 +1,16 @@
+          string::npos in C++
+
+It is a constant static member value with the highest possible value for an element of type size_t.
+It actually means until the end of the string.
+It is used as the value for a length parameter in the string’s member functions.
+As a return value, it is usually used to indicate no matches.
+
+string:npos constant is defined with a value of -1, because size_t is an unsigned integral type, and -1 is the largest possible representable value for this type.
+example
+ 
+ s=geeksforgeeks  s1=for
+ int f=s.find(s1) // f gives 5 index where we find 
+  if(f!=string::npos) //found  // Check if position is -1 or not
+
+  // Check IF string is rotation of each other or not first we merge one string s1=s1+s1 then find s2 in s1 if //found then true
+  
